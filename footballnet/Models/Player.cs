@@ -22,7 +22,7 @@ namespace footballnet.Models
         Forward = 'U'
     }
 
-    public class PlayersNr
+    public class PlayerNr
     {
         public int Id { get; set; }
         public int Nr { get; set; }
@@ -60,7 +60,7 @@ namespace footballnet.Models
         public float AvgGoalsMissed { get; set; }
     }
 
-    public class PlayersRecord
+    public class PlayerRecord
     {
         public int Id { get; set; }
 
@@ -68,11 +68,11 @@ namespace footballnet.Models
         public List<Player> Players { get; set; }
     }
 
-    public class PlayersNrsRecord
+    public class PlayerNrRecord
     {
         public int Id { get; set; }
 
         [JsonProperty("Speletajs")]
-        public List<PlayersNr> PlayersNrs { get; set; }
+        public List<PlayerNr> PlayersNrs { get; set; }
     }
 }

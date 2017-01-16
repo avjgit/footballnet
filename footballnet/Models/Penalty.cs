@@ -18,7 +18,7 @@ namespace footballnet.Models
         public int PlayerNr { get; set; }
     }
 
-    public class PenaltiesRecord
+    public class PenaltyRecord
     {
         public int Id { get; set; }
 

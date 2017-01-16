@@ -33,11 +33,11 @@ namespace footballnet.Models
         public int PlayerNr { get; set; }
 
         [JsonProperty("P")]
-        [JsonConverter(typeof(SingleOrArrayConverter<PlayersNr>))]
-        public List<PlayersNr> Passers { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<PlayerNr>))]
+        public List<PlayerNr> Passers { get; set; }
     }
 
-    public class GoalsRecord
+    public class GoalRecord
     {
         public int Id { get; set; }
 

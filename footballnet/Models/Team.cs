@@ -11,16 +11,16 @@ namespace footballnet.Models
         public string Title { get; set; }
 
         [JsonProperty("Speletaji")]
-        public PlayersRecord AllPLayersRecord { get; set; }
+        public PlayerRecord AllPLayersRecord { get; set; }
 
         [JsonProperty("Pamatsastavs")]
-        public PlayersNrsRecord MainPlayersRecord { get; set; }
+        public PlayerNrRecord MainPlayersRecord { get; set; }
 
         [JsonProperty("Sodi")]
-        public PenaltiesRecord PenaltiesRecord { get; set; }
+        public PenaltyRecord PenaltiesRecord { get; set; }
 
         [JsonProperty("Varti")]
-        public GoalsRecord GoalsRecord { get; set; }
+        public GoalRecord GoalsRecord { get; set; }
 
         [JsonProperty("Mainas")]
         public ChangeRecord ChangeRecord { get; set; }
