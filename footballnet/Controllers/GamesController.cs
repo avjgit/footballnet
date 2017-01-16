@@ -8,12 +8,56 @@ using System.Web;
 using System.Web.Mvc;
 using footballnet.Data;
 using footballnet.Models;
+using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace footballnet.Controllers
 {
     public class GamesController : Controller
     {
         private FootballContext db = new FootballContext();
+
+        public ActionResult DeleteAll()
+        {
+            db.Player.RemoveRange(db.Player);
+            db.PlayerRecord.RemoveRange(db.PlayerRecord);
+            db.PlayerNr.RemoveRange(db.PlayerNr);
+            db.PlayerNrRecord.RemoveRange(db.PlayerNrRecord);
+            db.Penalty.RemoveRange(db.Penalty);
+            db.PenaltyRecord.RemoveRange(db.PenaltyRecord);
+            db.Goal.RemoveRange(db.Goal);
+            db.GoalRecord.RemoveRange(db.GoalRecord);
+            db.Change.RemoveRange(db.Change);
+            db.ChangeRecord.RemoveRange(db.ChangeRecord);
+            db.Referee.RemoveRange(db.Referee);
+            db.Team.RemoveRange(db.Team);
+            db.Game.RemoveRange(db.Game);
+
+            db.SaveChanges();
+            return View("Index", db.Game.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase[] files)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var file in files.Where(f => f != null && f.ContentLength > 0))
+                {
+                    using (var fileStream = new StreamReader(file.InputStream))
+                    {
+                        var gameRecord = JsonConvert.DeserializeObject<GameRecord>(fileStream.ReadToEnd());
+
+                        db.Game.Add(gameRecord.Spele);
+                    }
+                }
+                db.SaveChanges();
+            }
+
+
+            return View("Index", db.Game.ToList());
+        }
 
         // GET: Games
         public ActionResult Index()

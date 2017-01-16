@@ -4,6 +4,17 @@
     ViewBag.Title = "Index";
 }
 
+
+<h3>Upload JSON file with football statistics</h3>
+@using (Html.BeginForm("Upload", "Games", FormMethod.Post, new { enctype = "multipart/form-data" })){
+    <input type="file" class="multiple" name="files" multiple />
+    <button>Upload</button>
+}
+
+<p>
+    @Html.ActionLink("DeleteAll", "DeleteAll")
+</p>
+
 <h2>Index</h2>
 
 <p>
